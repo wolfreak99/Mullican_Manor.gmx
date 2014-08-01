@@ -11,6 +11,7 @@
     </sprites>
     <sprite>sprites\spr_char</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_wall_invisible</sprite>
     <sprite>sprites\spr_walltile</sprite>
   </sprites>
   <backgrounds name="background">
@@ -277,6 +278,7 @@
     <scripts name="game_scripts">
       <scripts name="camera">
         <script>scripts\camera_resize.gml</script>
+        <script>scripts\camera_follow.gml</script>
       </scripts>
       <scripts name="movement">
         <script>scripts\scr_collision_1.gml</script>
@@ -298,6 +300,7 @@
     <object>objects\obj_char</object>
     <object>objects\cont_game</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_wall_invisible</object>
     <object>objects\par_solid</object>
     <objects name="ignore_these">
       <object>objects\obj_moveable</object>
