@@ -19,7 +19,7 @@ if place_meeting(x, y, argument0)
         self_x = (x - sprite_xoffset) + (sprite_width / 2);
         other_x = (_obj.x - _obj.sprite_xoffset) + (_obj.sprite_width / 2);
         meas = self_x - other_x;
-        x += meas;
+        x += sign(meas);
     }
     if (argument2)
     {

@@ -27,10 +27,14 @@
             <kind>1</kind>
             <string>event_inherited();
 
-move_speed_walk = 2; // Speed the character should walk.
-move_speed_run = 8; // Speed the character should run.
+move_speed_walk = 4; // Speed the character should walk.
+move_speed_run = 6; // Speed the character should run.
 
 key_run = vk_shift;
+key_dup = vk_up;
+key_ddown = vk_down;
+key_dleft = vk_left;
+key_dright = vk_right;
 
 //SYSTEM VARIABLES, DON'T MESS WITH.
 move_x = 0;
@@ -58,8 +62,8 @@ move_y = 0;
           <argument>
             <kind>1</kind>
             <string>//Get up/down/left/right inputs in a x/y vector increment..
-axis_x = key_down(vk_right) - key_down(vk_left);
-axis_y = key_down(vk_down) - key_down(vk_up);
+axis_x = key_down(key_dright) - key_down(key_dleft);
+axis_y = key_down(key_ddown) - key_down(key_dup);
 
 //Modify speed if key_run is held.
 var spd;
@@ -72,12 +76,18 @@ else
 move_x = (axis_x * spd);
 move_y = (axis_y * spd);
 
-
 //Handle wall collisions.
-scr_collision_wiggle(obj_wall, axis_x, axis_y, 16, 1);
-scr_collision_wiggle(obj_wall_invisible, axis_x, axis_y, 6, 1);
-scr_collision_1(par_solid, 1, true);
+scr_collision_wiggle(obj_wall, axis_x, axis_y, 16, spd / 4);
+scr_collision_wiggle(obj_wall_invisible, axis_x, axis_y, 6, spd / 4);
+scr_collision_1(par_solid, spd, true);
 
+//Prevent getting stuck in walls
+movement_collision_nostuck(par_solid, true, true);
+
+
+//Round movement to remove decimals
+move_x = round(move_x);
+move_y = round(move_y);
 
 //Add final move_x/move_y to the x.
 x += move_x;
@@ -92,6 +102,7 @@ y = clamp(y, 0, room_height);
 //Change depth to reflect y for layering.
 scr_handle_depth();
 
+//Have camera follow this object..
 camera_follow(self);
 </string>
           </argument>

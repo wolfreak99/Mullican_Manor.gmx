@@ -25,13 +25,13 @@ vx = sign(do_x);
 vy = sign(do_y);
 
 check = 16;
-wiggle_speed = 1;
-if (argument_count > 3)
+wiggle_speed = clamp(argument[4],1,4);
+/*if (argument_count > 3)
 {
     check = argument[3];
     if (argument_count > 4)
         wiggle_speed = argument[4];
-}
+}*/
 
 
 if (do_x != 0)
@@ -44,12 +44,13 @@ if (do_x != 0)
             if (!place_meeting(x + vx, y + iy, obj))
             {
                 move_y += sign(iy) * wiggle_speed;
-                exit;
+                ///exit;
                 loop = false;
             }
         }
     }
 }
+loop = true;
 if (do_y != 0)
 {
     if (place_meeting(x, y + vy, obj))
@@ -60,7 +61,7 @@ if (do_y != 0)
             if (!place_meeting(x + ix, y + vy, obj))
             {
                 move_x += sign(ix) * wiggle_speed;
-                exit;
+                //exit;
                 loop = false;
             }
         }
