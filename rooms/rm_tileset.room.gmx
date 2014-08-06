@@ -52,7 +52,11 @@
   <instances>
     <instance objName="obj_tileset_gen" x="32" y="32" name="inst_F434B155" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles/>
+  <tiles>
+    <tile bgName="background0" x="288" y="192" w="32" h="32" xo="0" yo="0" id="10000001" name="inst_F5D03B42" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="background0" x="288" y="224" w="32" h="32" xo="0" yo="0" id="10000002" name="inst_0B7C6558" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="background0" x="288" y="256" w="32" h="32" xo="0" yo="0" id="10000003" name="inst_25632141" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+  </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>

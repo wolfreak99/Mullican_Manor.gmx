@@ -11,6 +11,7 @@
     </sprites>
     <sprite>sprites\spr_char</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_wall_invisible</sprite>
     <sprite>sprites\spr_walltile</sprite>
   </sprites>
   <backgrounds name="background">
@@ -278,6 +279,7 @@
     <scripts name="game_scripts">
       <scripts name="camera">
         <script>scripts\camera_resize.gml</script>
+        <script>scripts\camera_follow.gml</script>
       </scripts>
       <scripts name="movement">
         <script>scripts\scr_collision_1.gml</script>
@@ -310,6 +312,7 @@
   <rooms name="rooms">
     <room>rooms\rm_preloader</room>
     <room>rooms\rm_game</room>
+    <room>rooms\rm_game2</room>
     <room>rooms\rm_tileset</room>
   </rooms>
   <constants number="35">

@@ -58,20 +58,19 @@
 ***************************************************/
 if (key_pressed(vk_anykey))
 {
+    var confirm;
     if (key_down(vk_control))
     {
         if (key_pressed(ord("R")))
         {
             if (key_down(vk_shift))
             {
-                var confirm;
                 confirm = show_question("Are you sure you wish to restart the game?");
                 if (confirm)
                     game_restart();
             }
             else
             {
-                var confirm;
                 confirm = show_question("Are you sure you wish to restart the room?");
                 if (confirm)
                     room_restart();
@@ -80,7 +79,6 @@ if (key_pressed(vk_anykey))
     }
     if (key_pressed(vk_escape))
     {
-        var confirm;
         confirm = show_question("Are you sure you wish to end the game?");
         if (confirm)
             game_end();
@@ -92,7 +90,13 @@ if (key_pressed(vk_anykey))
     if (key_pressed(vk_f2))
     {
         if room_exists(room - 1)
-            room_goto_previous();
+        {
+            //Reloading rm_preloader will reload datasets which causes memory leak issues.
+            if ((room - 1) == rm_preloader)
+                show_message("Cannot rerun preloader. Instead, please restart game via ctrl + shift + R");
+            else
+                room_goto_previous();
+        }
     }
     if (key_pressed(vk_f3))
     {
@@ -123,7 +127,7 @@ if (key_pressed(vk_anykey))
           <argument>
             <kind>1</kind>
             <string>///resize camera
-//camera_resize(global.resol_w, global.resol_h, 1, true);
+//camera_resize(global.resol_w, global.resol_h, global.resol_zoom, false);
 </string>
           </argument>
         </arguments>
@@ -148,6 +152,35 @@ if (key_pressed(vk_anykey))
             <kind>1</kind>
             <string>///unload game when finished
 scr_unloader();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(fnt_main);
+var hud_string;
+hud_string = "Speed: " + string(fps) + " / " + string(room_speed) + " (" + string((fps / room_speed) * 100) + "%)";
+draw_set_color(c_black);
+draw_text(7, 15, hud_string);
+draw_set_color(c_white);
+draw_text(8, 16, hud_string);
 </string>
           </argument>
         </arguments>
