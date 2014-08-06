@@ -5,11 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-<<<<<<< HEAD
-  <parentName>par_solid</parentName>
-=======
   <parentName>obj_wall</parentName>
->>>>>>> origin/master
   <maskName>&lt;undefined&gt;</maskName>
   <events/>
   <PhysicsObject>0</PhysicsObject>
