@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,11 +27,14 @@
             <kind>1</kind>
             <string>event_inherited();
 
-//camera_resize(global.resol_w, global.resol_h, global.resol_zoom, false);
-//camera_resize(global.resol_w, global.resol_h, global.resol_zoom, true);
+move_speed_walk = 4; // Speed the character should walk.
+move_speed_run = 6; // Speed the character should run.
 
-
-move_speed = 2; // Speed the character should go to..
+key_run = vk_shift;
+key_dup = vk_up;
+key_ddown = vk_down;
+key_dleft = vk_left;
+key_dright = vk_right;
 
 //SYSTEM VARIABLES, DON'T MESS WITH.
 move_x = 0;
@@ -59,22 +62,47 @@ move_y = 0;
           <argument>
             <kind>1</kind>
             <string>//Get up/down/left/right inputs in a x/y vector increment..
-axis_x = key_down(vk_right) - key_down(vk_left);
-axis_y = key_down(vk_down) - key_down(vk_up);
+axis_x = key_down(key_dright) - key_down(key_dleft);
+axis_y = key_down(key_ddown) - key_down(key_dup);
 
-move_x = (axis_x * move_speed);
-move_y = (axis_y * move_speed);
+//Modify speed if key_run is held.
+var spd;
+if (key_down(key_run))
+    spd = move_speed_run;
+else
+    spd = move_speed_walk;
 
-scr_collision_wiggle(obj_wall, axis_x, axis_y, 16, 1);
-scr_collision_1(par_solid, 1, true);
+//Convert input and speed to movement.
+move_x = (axis_x * spd);
+move_y = (axis_y * spd);
 
+//Handle wall collisions.
+scr_collision_wiggle(obj_wall, axis_x, axis_y, 16, spd / 4);
+scr_collision_wiggle(obj_wall_invisible, axis_x, axis_y, 6, spd / 4);
+scr_collision_1(par_solid, spd, true);
+
+//Prevent getting stuck in walls
+movement_collision_nostuck(par_solid, true, true);
+
+//Round movement to remove decimals
+move_x = round(move_x);
+move_y = round(move_y);
+
+//Add final move_x/move_y to the x.
 x += move_x;
 y += move_y;
 
+
+//Keep within room distance.
 x = clamp(x, 0, room_width);
 y = clamp(y, 0, room_height);
 
+
+//Change depth to reflect y for layering.
 scr_handle_depth();
+
+//Have camera follow this object..
+camera_follow(self);
 </string>
           </argument>
         </arguments>

@@ -257,8 +257,8 @@
         <script>scripts\draw_button1.gml</script>
       </scripts>
       <script>scripts\ABOUT.gml</script>
-      <script>scripts\scrkit_unloader.gml</script>
       <script>scripts\scrkit_preloader.gml</script>
+      <script>scripts\scrkit_unloader.gml</script>
       <scripts name="scrkit_linkbacks">
         <script>scripts\ABOUT_LINKBACKS.gml</script>
         <script>scripts\btncustom.gml</script>
@@ -273,6 +273,13 @@
           <script>scripts\checkpoint_clear_room.gml</script>
           <script>scripts\checkpoint_lastrange.gml</script>
         </scripts>
+        <scripts name="sinewave">
+          <script>scripts\sine_get_absolute.gml</script>
+          <script>scripts\sine_get.gml</script>
+          <script>scripts\sine_set_speed.gml</script>
+          <script>scripts\sine_reset.gml</script>
+          <script>scripts\sine_update.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <script>scripts\scr_unloader.gml</script>
@@ -283,6 +290,7 @@
       </scripts>
       <scripts name="movement">
         <script>scripts\scr_collision_1.gml</script>
+        <script>scripts\scr_collision_1_old.gml</script>
         <script>scripts\scr_collision_wiggle.gml</script>
       </scripts>
       <script>scripts\scr_handle_depth.gml</script>
