@@ -6,13 +6,16 @@
   2 : Blackspace
   1 : top left corner free
   
- ***************************************************/
+***************************************************/
+var _x, _y, inv;
 _x = 16 + ((i mod rows) * sprwid);
 _y = 16 + ((i div rows) * sprwid);
+
 if (argument0)
-    inv = 2
+    inv = 2;
 else
-    inv = 0
+    inv = 0;
+
 draw_sprite_ext(spr, inv, _x, _y, 1, 1, 0, c_white, 1); // Draw whitespace..
 if (argument1)
     draw_sprite_ext(spr, inv + 1, _x, _y, 1, 1, 0, c_white, 1);
