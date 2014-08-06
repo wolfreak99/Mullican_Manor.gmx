@@ -66,7 +66,7 @@ move_x = (axis_x * move_speed);
 move_y = (axis_y * move_speed);
 
 scr_collision_wiggle(obj_wall, axis_x, axis_y, 16, 1);
-scr_collision_1(obj_wall, 1, true);
+scr_collision_1(par_solid, 1, true);
 
 x += move_x;
 y += move_y;

@@ -15,6 +15,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -298,6 +299,7 @@
     <object>objects\obj_char</object>
     <object>objects\cont_game</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_wall_invisible</object>
     <object>objects\par_solid</object>
     <objects name="ignore_these">
       <object>objects\obj_moveable</object>
@@ -307,8 +309,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_preloader</room>
-    <room>rooms\rm_tileset</room>
     <room>rooms\rm_game</room>
+    <room>rooms\rm_tileset</room>
   </rooms>
   <constants number="35">
     <constant name="VIEW_CAMERA">0</constant>
