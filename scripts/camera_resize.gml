@@ -2,7 +2,6 @@
 /***************************************************
   USEAGE: Resize the main view used for the camera (which is view 1).
   Temporary placeholder, will be adding more to this later on.
-  
  ***************************************************/
 var i, zoom, width, height, wview, hview, wport, hport, do_global;
 width = argument0;

@@ -17,7 +17,8 @@ globalvar g_camera_x, g_camera_y;
 g_camera_x = 0;
 g_camera_y = 0;
 
-
+globalvar g_options_surfaces;
+g_options_surfaces = true;
 
 
 //Extra stuff

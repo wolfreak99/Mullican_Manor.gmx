@@ -29,6 +29,7 @@
 
 sine_reset();
 sine_set_speed(1.25);
+message_scr_create();
 </string>
           </argument>
         </arguments>
@@ -91,6 +92,14 @@ if (key_pressed(vk_anykey))
     {
             window_set_fullscreen(!window_get_fullscreen());
     }
+    if (key_pressed(vk_f6))
+    {
+        instance_create(x,y,obj_window);
+    }
+    if (key_pressed(vk_f7))
+    {
+        message_push("this is a test");
+    }
     if (key_pressed(vk_f2))
     {
         if room_exists(room - 1)
@@ -130,6 +139,7 @@ if (key_pressed(vk_anykey))
             <kind>1</kind>
             <string>///sine_update();
 sine_update();
+message_scr_update();
 </string>
           </argument>
         </arguments>
@@ -202,21 +212,26 @@ scr_unloader();
             <kind>1</kind>
             <string>///Hud Info
 draw_set_font(fnt_main);
+
 var hud_string, char_x, char_y;
 //hud_string = "Speed: " + string(fps) + " / " + string(room_speed) + " (" + string((fps / room_speed) * 100) + "%)";
-char_x = 0;
-char_y = 0;
+char_x = -1;
+char_y = -1;
+
 if instance_exists(obj_char)
 {
     char_x = obj_char.x;
     char_y = obj_char.y;
 }
+
 hud_string = string_format2("Speed: %a01 / %a02 ( %a03)#X / Y: %a04 / %a05", fps, room_speed, (fps / room_speed) * 100, char_x, char_y);
 
 draw_set_color(c_black);
 draw_text(7, 15, hud_string);
 draw_set_color(c_white);
 draw_text(8, 16, hud_string);
+
+message_scr_draw();
 </string>
           </argument>
         </arguments>

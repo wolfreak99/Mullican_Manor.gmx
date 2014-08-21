@@ -13,10 +13,13 @@
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wall_invisible</sprite>
     <sprite>sprites\spr_walltile</sprite>
+    <sprite>sprites\spr_textbox</sprite>
+    <sprite>sprites\sprite7</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\background1</background>
+    <background>background\background3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -280,6 +283,12 @@
           <script>scripts\sine_reset.gml</script>
           <script>scripts\sine_update.gml</script>
         </scripts>
+        <scripts name="messages">
+          <script>scripts\message_scr_draw.gml</script>
+          <script>scripts\message_scr_update.gml</script>
+          <script>scripts\message_scr_create.gml</script>
+          <script>scripts\message_push.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <script>scripts\scr_unloader.gml</script>
@@ -319,7 +328,10 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_preloader</room>
+    <room>rooms\rm_test</room>
+    <room>rooms\rm_gameTemplate</room>
     <room>rooms\rm_game</room>
+    <room>rooms\room4</room>
     <room>rooms\rm_game2</room>
     <room>rooms\rm_tileset</room>
   </rooms>
